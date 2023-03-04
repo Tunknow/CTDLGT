@@ -22,11 +22,14 @@ struct matrix
         }
 };
 
-matrix fpow(matrix A, int n)
+matrix fpow (matrix a, long long n)
 {
-    if(n==1) return A;
-    if(n%2==0) return fpow(A,n/2)*fpow(A,n/2);
-    else return A*fpow(A,n/2)*fpow(A,n/2);
+    if (n==1)
+        return a;
+    if (n%2!=0)
+        return fpow(a,n-1)*a;
+    matrix tmp = fpow(a,n/2);
+    return tmp*tmp;
 }
 
 int main()
