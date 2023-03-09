@@ -5,12 +5,17 @@ using namespace std;
 
 int mod=1e9+7;
 
-ll ex(ll a, ll b)
+long long power(long long x, long long y)
 {
-	if(b==0) return 1;
-	if(b==1) return a;
-	if(b%2==0) return (ex(a, b/2)*ex(a,b/2))%mod;
-	else return (((ex(a,b/2)*ex(a,b/2))%mod)*a)%mod;
+    long long temp;
+    if (y == 0)
+        return 1;
+    if(y==1) return x;
+    temp = power(x, y / 2);
+    if (y % 2 == 0)
+        return (temp * temp)%mod;
+    else
+        return (((temp * temp)%mod)*x)%mod;
 }
 
 int main()
@@ -29,7 +34,7 @@ int main()
 			r=r*10+c;
 			k/=10;
 		}
-		//cout << r << endl;
-		cout << ex(n, r) << endl;
+		cout << r << endl;
+		//cout << power(n, r) << endl;
 	}
 }
